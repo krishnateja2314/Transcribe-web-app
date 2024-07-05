@@ -1,7 +1,7 @@
 import React from 'react'
 
 function FileDisplay(props) {
-    const { file, handleFormSubmission, handleAudioReset, audio } = props
+    const { file, handleFormSubmission, handleAudioReset, audioStream } = props
 
     return (
         <main className='flex-1 flex flex-col gap-3 sm:gap-4 md:gap-5 max-w-full sm:w-96 w-72 text-center justify-center p-4 pb-10 mx-auto'>

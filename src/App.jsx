@@ -8,7 +8,7 @@ import { MessageTypes } from './utils/presets'
 
 function App() {
   const [file, setFile] = useState(null)
-  const [audioStream, setAudio] = useState(null)
+  const [audioStream, setAudioStream] = useState(null)
   const [output, setOutput] = useState(null)
   const [loading, setLoading] = useState(false)
   const [finished, setFinished] = useState(false)
@@ -41,15 +41,13 @@ function App() {
           console.log('lOADING')
           break;
         case 'RESULT':
+          console.log(e.data.results)
           setOutput(e.data.results)
           break;
         case 'INFERENCE_DONE':
           setFinished(true)
           console.log('Done')
           break;
-
-
-
       }
 
     }
@@ -79,7 +77,7 @@ function App() {
     worker.current.postMessage({
       type: MessageTypes.INFERENCE_REQUEST,
       audio,
-      model_name
+      model_name,
     })
 
   }
@@ -89,10 +87,10 @@ function App() {
       <section className='min-h-screen flex flex-col'>
         <Header />
         {output ? (
-          <Information />
+          <Information output={output} />
         ) : loading ? (
           <Transcribing />
-        ) : isAudioAvailable ? (<FileDisplay handleFormSubmission={handleFormSubmission} handleAudioReset={handleAudioReset} file={file} audio={audioStream} />) : (<HomePage setFile={setFile} setAudio={setAudio} />)}
+        ) : isAudioAvailable ? (<FileDisplay handleFormSubmission={handleFormSubmission} handleAudioReset={handleAudioReset} file={file} audioStream={audioStream} />) : (<HomePage setFile={setFile} setAudioStream={setAudioStream} />)}
       </section>
       <footer>
 

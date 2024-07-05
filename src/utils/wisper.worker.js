@@ -29,9 +29,9 @@ async function transcribe(audio) {
 
     try {
         pipeline = await MyTranscriptionPipeline.getInstance(load_model_callback)
-    } catch (err) {
+    } /* catch (err) {
         console.log(err.message)
-    }
+    } */finally { }
 
     sendLoadingMessage('success')
 

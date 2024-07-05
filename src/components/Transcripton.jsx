@@ -1,9 +1,10 @@
 import React from 'react'
 
-function Transcripton() {
+function Transcripton(props) {
+    const { textElement } = props;
     return (
         <div>
-            Transcripton
+            {textElement}
         </div>
     )
 }

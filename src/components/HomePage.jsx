@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 function HomePage(props) {
-    const { setAudio, setFile } = props
+    const { setAudioStream, setFile } = props
     const [recordingStatus, setRecordingStatus] = useState('inactive')
     const [audioChunks, setAudioChunks] = useState([])
     const [duration, setDuration] = useState(0)
@@ -47,7 +47,7 @@ function HomePage(props) {
         mediaRecoader.current.stop()
         mediaRecoader.current.onstop = () => {
             const audioBlob = new Blob(audioChunks, { type: mimeType })
-            setAudio(audioBlob)
+            setAudioStream(audioBlob)
             setAudioChunks([])
             setDuration(0)
         }
